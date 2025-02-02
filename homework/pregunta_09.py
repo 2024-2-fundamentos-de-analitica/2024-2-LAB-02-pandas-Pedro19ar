@@ -5,11 +5,11 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_09():
     """
-    Agregue el año como una columna al dataframe que contiene el archivo
-    `tbl0.tsv`.
+    Agregue el año como una columna al dataframe que contiene el archivo `tbl0.tsv`.
 
     Rta/
         c0 c1  c2          c3  year
@@ -21,5 +21,17 @@ def pregunta_09():
     37  37  C   9  1997-07-22  1997
     38  38  E   1  1999-09-28  1999
     39  39  E   5  1998-01-26  1998
-
     """
+    file_path = "files/input/tbl0.tsv"  # Ruta del archivo
+
+    # Cargar el archivo tbl0.tsv en un DataFrame
+    df = pd.read_csv(file_path, sep="\t")
+
+    # Extraer el año de la columna c3 (asumiendo que contiene fechas en formato YYYY-MM-DD)
+    df["year"] = df["c3"].str[:4]
+
+    return df
+
+# Llamada a la función
+print(pregunta_09())
+

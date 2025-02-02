@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_05():
     """
@@ -20,3 +21,9 @@ def pregunta_05():
     E    9
     Name: c2, dtype: int64
     """
+    
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t') #lee el archivo tbl0.tsv
+
+    return df.groupby('c1')['c2'].max() #imprime el valor maximo de c2 por cada letra en la columna c1
+
+print(pregunta_05()) #imprime la funcion
